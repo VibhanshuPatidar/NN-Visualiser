@@ -31,51 +31,41 @@ pip install -r requirements.txt
 Create a `requirements.txt` file with the following dependencies:
 
 ```txt
-torch>=1.9.0
-torchvision>=0.10.0
-numpy>=1.21.0
-matplotlib>=3.4.0
-seaborn>=0.11.0
-plotly>=5.0.0
-streamlit>=1.0.0
-opencv-python>=4.5.0
-Pillow>=8.3.0
-pandas>=1.3.0
-```
-
-
-## Usage
-
-### Basic Setup
-
-```python
-from nn_visualiser import Visualiser
-import torch
-
-# Load your model
-model = torch.load('path/to/your/model.pth')
-model.eval()
-
-# Create visualizer
-viz = Visualiser(model)
-
-# Visualize with input data
-input_tensor = torch.randn(1, 3, 224, 224)  # Example input
-viz.visualize(input_tensor)
+fastapi>=0.110
+uvicorn[standard]>=0.22
+torch>=2.1
+typing-extensions>=4.8
+pydantic>=2.6
+numpy>=1.23
 ```
 
 
 ### Setting Model Path
 
 
-
-**Load and pass model**
+**Load and pass model in server.py file**
 
 ```python
 MODEL_PATH = "your_model.pt"
 model = torch.load(MODEL_PATH, map_location="cpu",weights_only=False)
 ```
 
+
+
+## Usage
+
+### Basic Setup for frontend
+
+```txt
+cd nn-visualizer
+npm install 
+npm run dev
+```
+#### In another terminal start the backend service
+
+```txt
+uvicorn server:app --reload --host 0.0.0.0 --port 8000
+```
 
 
 
